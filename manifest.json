@@ -25,7 +25,8 @@
                 "http://*/*",
                 "https://*/*",
                 "<all_urls>"
-            ]
+            ],
+            "run_at": "document_start"
         }
     ],
     "description": "Readerly - Speed/Accessible Reading via RSVP",

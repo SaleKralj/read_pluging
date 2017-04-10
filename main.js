@@ -19,7 +19,7 @@
 * WARNING:
 * Storage is all user settings. Too cumbersome otherwise for now.
 */
-
+console.log("INYECTED");
 (function(){
 
 	// ============== SETUP ============== \\
@@ -180,3 +180,5 @@
 	});  // End event listener
 
 })();
+
+
