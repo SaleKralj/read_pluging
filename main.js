@@ -19,7 +19,7 @@
 * WARNING:
 * Storage is all user settings. Too cumbersome otherwise for now.
 */
-
+console.log("INYECTED");
 (function(){
 
 	// ============== SETUP ============== \\
@@ -145,9 +145,32 @@
 
 
 	var readArticle = function () {
-		openReaderly();
-		var $clone = $('html').clone();
-		read( $clone[0] );
+
+	    console.log('Started reading');
+
+	    // Checking if the page is fully loaded.
+	    if (document.readyState === 'complete') {
+	        // If the page is fully loaded we proceed to open readerly
+            openReaderly();
+            var $clone = $('html').clone();
+            read( $clone[0] );
+
+        } else {
+	        // If the page is not ready we add the reading function to the on load event.
+	        // The window onload event is copied to about overwriting any functionality from the site.
+	        var oldWindowLoadEvent = window.onload;
+
+	        window.onload = function () {
+	            // We trigger the old window load event if it exist.
+                if (oldWindowLoadEvent) {
+                    oldWindowLoadEvent()
+                }
+                // We call the read acticle when the page is loaded. readyState should be equal to
+                // 'complete' now
+                readArticle();
+            }
+
+        }
 	};
 
 
@@ -166,3 +189,5 @@
 	});  // End event listener
 
 })();
+
+
