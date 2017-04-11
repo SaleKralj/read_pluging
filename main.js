@@ -126,12 +126,21 @@
 	};
 
 
+	var createReadableContainer = function(selection) {
+        var $readable = $('<div></div>');
+        $readable.append(selection);
+        return $readable;
+    };
+    var getTextSelection = function() {
+		return document.getSelection().getRangeAt(0).cloneContents();
+    };
+    var isEmptyContainer = function(container) {
+		return !container[0].innerHTML;
+    };
 	var readSelectedText = function () {
-		openReaderly();
-		var contents = document.getSelection().getRangeAt(0).cloneContents();
-		var $container = $('<div></div>');
-		$container.append(contents);
-		read( $container[0] );
+		var $container = createReadableContainer(getTextSelection());
+        openReaderly();
+        return isEmptyContainer($container) ? false : read($container);
 	};
 
 

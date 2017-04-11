@@ -37,6 +37,18 @@
     },
     "manifest_version": 2,
     "name": "Readerly",
+    "commands": {
+        "read_selection": {
+            "suggested_key": { "default": "Ctrl+Shift+Y" },
+            "description": "Send a 'toggle-feature' event to the extension"
+        },
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+F",
+                "mac": "MacCtrl+Shift+F"
+            }
+        }
+    },
     "offline_enabled": true,
     "permissions": [
         "contextMenus",
